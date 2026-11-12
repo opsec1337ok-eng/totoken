@@ -4,7 +4,13 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+// Configuration CORS pour accepter les requêtes de ton site Vercel
+app.use(cors({
+    origin: ['https://snaaplus.vercel.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 
 const client = new Client({
     intents: [
@@ -120,8 +126,10 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("Serveur API démarré sur http://localhost:3000");
+// Utilisation du port dynamique requis par Railway
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Serveur API démarré sur le port ${PORT}`);
 });
 
 client.login(TOKEN);
