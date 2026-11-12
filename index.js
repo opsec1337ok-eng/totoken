@@ -13,7 +13,7 @@ const client = new Client({
     ]
 });
 
-const TOKEN = "MTU3MDQ5ODM3OTY0Mzg4MzU0MA.GXvWps.dBtzLLd8QhO-rkGZov8WojWxHKBGjmHt6JKp3E"; // Remplace par ton token
+const TOKEN = process.env.DISCORD_TOKEN || "MET_TON_TOKEN_ICI_POUR_TEST_LOCAL";
 const CHANNEL_ID = "1570473262553501779";
 const ROLE_ID = "1570494718100504606";
 
